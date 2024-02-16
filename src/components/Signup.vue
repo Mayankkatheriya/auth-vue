@@ -1,25 +1,25 @@
 <!-- src/components/Signup.vue -->
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-100">
-    <div class="max-w-md w-full p-6 bg-white rounded-md shadow-md">
+  <div class="min-h-screen flex items-center justify-center text-white ">
+    <div class="max-w-md w-full p-6 backdrop-blur-md bg-white/30 rounded-md shadow-md">
       <h2 class="text-2xl font-bold text-center">Sign Up</h2>
       <form @submit.prevent="signup" class="mt-4 space-y-4">
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+          <label for="email" class="block text-sm font-medium text-white ">Email:</label>
           <input
             type="email"
             v-model="email"
             required
-            class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            class="mt-1 p-2 w-full border rounded-md text-gray-700 focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+          <label for="password" class="block text-sm font-medium text-white">Password:</label>
           <input
             type="password"
             v-model="password"
             required
-            class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            class="mt-1 p-2 w-full border rounded-md text-gray-700 focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         <button
@@ -40,6 +40,7 @@
 import { ref } from 'vue';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import router from '../router';
 
 const email = ref('');
 const password = ref('');
@@ -48,10 +49,15 @@ const signup = async () => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     const user = userCredential.user;
+    alert("Successfully  signed up!");
     console.log('User signed up:', user);
-    // You can redirect or perform additional actions upon successful signup
+    router.push('/');
   } catch (error) {
     console.error('Signup error:', error.message);
+  }
+  finally {
+    email.value = '';
+    password.value = '';
   }
 };
 </script>

@@ -1,3 +1,16 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("/geometric-gradient-futuristic-background_23-2149116406.avif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
