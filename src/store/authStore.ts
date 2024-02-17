@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 interface User {
   uid: string;
   email: string;
+  displayName: string;
   // Add other properties as needed
 }
 

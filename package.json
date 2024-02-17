@@ -8,8 +8,7 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "test:e2e": "ts-node --loader ts-node/esm/dist/index.js tests/e2e.test.ts"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "firebase": "^10.8.0",
@@ -26,6 +25,7 @@
     "@storybook/test": "^7.6.16",
     "@storybook/vue3": "^7.6.16",
     "@storybook/vue3-vite": "^7.6.16",
+    "@types/node": "^20.11.19",
     "@vitejs/plugin-vue": "^5.0.3",
     "autoprefixer": "^10.4.17",
     "playwright": "^1.41.2",

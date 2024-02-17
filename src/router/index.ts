@@ -8,7 +8,9 @@ import Dashboard from '../components/Dashboard.vue';
 const routes = [
   { path: '/', component: Login },
   { path: '/signup', component: Signup },
-  { path: '/dashboard', component: Dashboard, meta: { requiresAuth: true } },
+  // { path: '/dashboard', component: Dashboard, meta: { requiresAuth: true } },
+  { path: '/dashboard', component: Dashboard },
+
 ];
 
 const router = createRouter({
