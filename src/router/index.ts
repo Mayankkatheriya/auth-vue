@@ -16,12 +16,12 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _, next) => {
   const isAuthenticated = Boolean(auth.currentUser || sessionStorage.getItem('user'));
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
 
   if (requiresAuth && !isAuthenticated) {
-    next('/'); // Redirect to login if authentication is required but not authenticated
+    next('/');
   } else {
     next();
   }
