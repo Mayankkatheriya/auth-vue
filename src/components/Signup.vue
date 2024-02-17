@@ -49,13 +49,12 @@ const signup = async () => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
     const user = userCredential.user;
-    alert("Successfully  signed up!");
+    alert("Successfully signed up!");
     console.log('User signed up:', user);
     router.push('/');
-  } catch (error) {
+  } catch (error:any) {
     console.error('Signup error:', error.message);
-  }
-  finally {
+  } finally {
     email.value = '';
     password.value = '';
   }

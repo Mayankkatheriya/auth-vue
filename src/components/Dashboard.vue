@@ -5,10 +5,10 @@
       <h2 class="text-2xl font-bold text-center">Dashboard</h2>
       <div v-if="authStore.user">
         <p class="mt-4 text-sm">
-          User ID: {{ authStore.user.uid }}
+          User ID: {{ authStore.user.uid || 'N/A' }}
         </p>
         <p class="mt-2 text-sm">
-          User Name: {{ authStore.user.email || 'N/A' }}
+          User Email: {{ authStore.user.email || 'N/A' }}
         </p>
         <button
           @click="logout"
@@ -24,8 +24,9 @@
   </div>
 </template>
 
+
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useAuthStore } from '../store/authStore';
@@ -34,13 +35,10 @@ import router from '../router';
 const authStore = useAuthStore();
 
 onMounted(() => {
-  // Check if the user is authenticated
   onAuthStateChanged(auth, (currentUser) => {
     if (!currentUser) {
-      // Redirect to login if the user is not authenticated
       router.push('/login');
     } else {
-      // Update the user state in the Pinia store
       authStore.setUser(currentUser);
     }
   });
@@ -49,10 +47,9 @@ onMounted(() => {
 const logout = async () => {
   try {
     await signOut(auth);
-    // Clear user state in the Pinia store
     authStore.clearUser();
-    router.push('/'); // Redirect to login after logout
-  } catch (error) {
+    router.push('/');
+  } catch (error: any) {
     console.error('Logout error:', error.message);
   }
 };

@@ -58,7 +58,7 @@ const login = async () => {
 
     // Redirect to the dashboard after successful login
     router.push('/dashboard');
-  } catch (error) {
+  } catch (error:any) {
     console.error('Login error:', error.message);
   }
 };

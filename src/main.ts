@@ -14,8 +14,6 @@ app.use(pinia);
 // Initialize the auth store
 setupAuthStore();
 
-// ... (Firebase setup)
-
 app.use(router);
 app.mount('#app');
 
